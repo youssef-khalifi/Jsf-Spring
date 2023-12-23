@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+
+    <h:form>
+        <h1>Ajouter Filiere</h1>
+        <h:outputLabel>ID</h:outputLabel>
+        <h:inputText value="#{filiereBean.filiere.id}" readonly="true"></h:inputText>
+        <h:outputLabel>Code</h:outputLabel>
+        <h:inputText value="#{filiereBean.filiere.code}"></h:inputText>
+        <h:outputLabel>libelle</h:outputLabel>
+        <h:inputText value="#{filiereBean.filiere.libelle}"></h:inputText>
+        <h:commandButton value="#{filiereBean.label}" action="#{filiereBean.save()}"></h:commandButton>
+    </h:form>
+
+<h1>Filieres</h1>
+    <h:form>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Code</th>
+                <th scope="col">Libelle</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+
+            <ui:repeat value="#{filiereBean.filiers}" var="f">
+                <tbody>
+                <tr>
+                    <td>${f.id}</td>
+                    <td>${f.code}</td>
+                    <td>${f.libelle}</td>
+                    <td>
+                        <h:commandButton action="#{filiereBean.modify(f)}" value="Edit">
+                        </h:commandButton>
+                        <h:commandButton action="#{filiereBean.delete(f)}" value="Delete">
+                        </h:commandButton>
+                    </td>
+                </tr>
+                </tbody>
+            </ui:repeat>
+        </table>
+    </h:form>
+</h:body>
+</html>
